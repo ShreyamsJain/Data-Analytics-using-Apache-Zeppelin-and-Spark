@@ -1,0 +1,16 @@
+org/apache/zeppelin/spark/dep/SparkDependencyContext.class
+org/apache/zeppelin/spark/ZeppelinContext$2.class
+org/apache/zeppelin/spark/ZeppelinRContext.class
+org/apache/zeppelin/spark/SparkOutputStream.class
+org/apache/zeppelin/spark/ZeppelinContext.class
+org/apache/zeppelin/spark/DepInterpreter.class
+org/apache/zeppelin/spark/SparkSqlInterpreter.class
+org/apache/zeppelin/spark/ZeppelinContext$1.class
+org/apache/zeppelin/spark/SparkVersion.class
+org/apache/zeppelin/spark/ZeppelinR$Request.class
+org/apache/zeppelin/spark/ZeppelinR$1.class
+org/apache/zeppelin/spark/dep/SparkDependencyResolver.class
+org/apache/zeppelin/spark/PySparkInterpreter.class
+org/apache/zeppelin/spark/PySparkInterpreter$PythonInterpretRequest.class
+org/apache/zeppelin/spark/SparkInterpreter.class
+org/apache/zeppelin/spark/ZeppelinR.class

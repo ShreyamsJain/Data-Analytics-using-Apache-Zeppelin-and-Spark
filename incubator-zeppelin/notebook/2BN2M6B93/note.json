@@ -1,0 +1,43 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark\nval param \u003d z.input(\"param\").toString\nprintln(param)",
+      "dateUpdated": "May 8, 2016 2:13:29 PM",
+      "config": {
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "param": "hello",
+          "param2": "world"
+        },
+        "forms": {
+          "param": {
+            "name": "param",
+            "displayName": "param",
+            "type": "input",
+            "defaultValue": "",
+            "hidden": false
+          }
+        }
+      },
+      "jobName": "paragraph_1462742009622_589111493",
+      "id": "20160508-141329_1344199921",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "param: String \u003d hello\nhello\n"
+      },
+      "dateCreated": "May 8, 2016 2:13:29 PM",
+      "dateStarted": "May 8, 2016 2:14:18 PM",
+      "dateFinished": "May 8, 2016 2:14:20 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "note for run test",
+  "id": "2BN2M6B93",
+  "angularObjects": {},
+  "config": {},
+  "info": {}
+}

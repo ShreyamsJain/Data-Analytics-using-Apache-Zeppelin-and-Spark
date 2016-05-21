@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.7">
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/dep/AbstractDependencyResolver.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/dep/Booter.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/dep/Dependency.java">
+<error line="46" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/dep/DependencyContext.java">
+<error line="84" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/dep/DependencyResolver.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/dep/Repository.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/dep/RepositoryListener.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/dep/RepositorySystemFactory.java">
+<error line="43" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/dep/TransferListener.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/display/AngularObject.java">
+<error line="47" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="56" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="74" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="82" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="90" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="98" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="106" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="114" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="124" severity="warning" message="&apos;if&apos; construct must use &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="125" severity="warning" message="&apos;if&apos; construct must use &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="137" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="145" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="155" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="163" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="198" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="206" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="226" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="236" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/display/AngularObjectListener.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/display/AngularObjectRegistry.java">
+<error line="37" column="24" severity="warning" message="Name &apos;GLOBAL_KEY&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="62" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="102" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="140" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="152" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="191" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="205" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/display/AngularObjectRegistryListener.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/display/AngularObjectWatcher.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/display/GUI.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/display/Input.java">
+<error line="52" severity="warning" message="&apos;if&apos; construct must use &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="53" severity="warning" message="&apos;if&apos; construct must use &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="57" severity="warning" message="&apos;if&apos; construct must use &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/ClassloaderInterpreter.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/Interpreter.java">
+<error line="68" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="75" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="227" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/InterpreterContext.java">
+<error line="28" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/InterpreterContextRunner.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/InterpreterException.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/InterpreterGroup.java">
+<error line="46" column="10" severity="warning" message="Name &apos;LOGGER&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="68" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="77" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="99" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="137" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="149" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="190" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="201" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/InterpreterOutput.java">
+<error line="34" column="21" severity="warning" message="Name &apos;NEW_LINE_CHAR&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="130" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="146" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/InterpreterOutputChangeListener.java">
+<error line="21" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/InterpreterOutputChangeWatcher.java">
+<error line="40" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/InterpreterOutputListener.java">
+<error line="19" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="23" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/InterpreterProperty.java">
+<error line="20" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/InterpreterPropertyBuilder.java">
+<error line="23" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/InterpreterResult.java">
+<error line="117" column="47" severity="warning" message="&apos;)&apos; is preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/InterpreterUtils.java">
+<error line="22" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/LazyOpenInterpreter.java">
+<error line="26" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/remote/ClientFactory.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/remote/InterpreterContextRunnerPool.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/remote/RemoteAngularObject.java">
+<error line="24" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/remote/RemoteAngularObjectRegistry.java">
+<error line="35" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="53" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="88" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/remote/RemoteInterpreter.java">
+<error line="39" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/remote/RemoteInterpreterContextRunner.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/remote/RemoteInterpreterEventClient.java">
+<error line="51" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="61" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="70" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="78" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="92" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="147" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="166" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="192" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/remote/RemoteInterpreterEventPoller.java">
+<error line="44" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/remote/RemoteInterpreterProcess.java">
+<error line="293" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/remote/RemoteInterpreterProcessListener.java">
+<error line="19" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/remote/RemoteInterpreterServer.java">
+<error line="538" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="651" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/remote/RemoteInterpreterUtils.java">
+<error line="32" column="17" severity="warning" message="Name &apos;LOGGER&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*_?$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/interpreter/WrappedInterpreter.java">
+<error line="20" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/resource/ByteBufferInputStream.java">
+<error line="24" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/resource/DistributedResourcePool.java">
+<error line="19" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="100" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/resource/LocalResourcePool.java">
+<error line="21" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="36" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="45" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="66" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/resource/RemoteResource.java">
+<error line="19" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/resource/Resource.java">
+<error line="22" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="32" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="44" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="79" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="87" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/resource/ResourceId.java">
+<error line="19" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/resource/ResourcePool.java">
+<error line="19" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="23" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="29" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="36" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="45" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="51" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="70" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="77" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/resource/ResourcePoolConnector.java">
+<error line="19" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="23" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="29" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/resource/ResourcePoolUtils.java">
+<error line="28" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/resource/ResourceSet.java">
+<error line="23" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/resource/WellKnownResourceName.java">
+<error line="19" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/scheduler/ExecutorFactory.java">
+<error line="28" column="34" severity="warning" message="Name &apos;_executor&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*_?$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck"/>
+<error line="29" column="23" severity="warning" message="Name &apos;_executorLock&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*_?$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/scheduler/FIFOScheduler.java">
+<error line="30" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="41" column="17" severity="warning" message="Name &apos;LOGGER&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*_?$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/scheduler/Job.java">
+<error line="81" column="17" severity="warning" message="Name &apos;LOGGER&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*_?$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/scheduler/JobListener.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/scheduler/JobProgressPoller.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/scheduler/ParallelScheduler.java">
+<error line="42" column="17" severity="warning" message="Name &apos;LOGGER&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*_?$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/scheduler/RemoteScheduler.java">
+<error line="35" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/scheduler/Scheduler.java">
+<error line="22" severity="warning" message="First sentence should end with a period." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/scheduler/SchedulerFactory.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/scheduler/SchedulerListener.java">
+</file>
+<file name="/Users/Shreyams/Desktop/CMPE_273/zeppelin/incubator-zeppelin/zeppelin-interpreter/src/main/java/org/apache/zeppelin/user/AuthenticationInfo.java">
+</file>
+</checkstyle>

@@ -1,0 +1,7 @@
+org/apache/zeppelin/spark/SparkInterpreterTest.class
+org/apache/zeppelin/spark/DepInterpreterTest.class
+org/apache/zeppelin/spark/SparkVersionTest.class
+org/apache/zeppelin/spark/dep/SparkDependencyResolverTest.class
+org/apache/zeppelin/spark/SparkSqlInterpreterTest.class
+org/apache/zeppelin/spark/SparkSqlInterpreterTest$1.class
+org/apache/zeppelin/spark/SparkInterpreterTest$1.class

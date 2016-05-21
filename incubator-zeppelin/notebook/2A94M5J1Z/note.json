@@ -1,0 +1,863 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n## Welcome to Zeppelin,Shreyams\n##### This is a live tutorial, you can run the code yourself. (Shift-Enter to Run)",
+      "authenticationInfo": {},
+      "dateUpdated": "May 12, 2016 7:38:07 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorHide": false,
+        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1423836981412_-1007008116",
+      "id": "20150213-231621_168813393",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003ch2\u003eWelcome to Zeppelin,Shreyams\u003c/h2\u003e\n\u003ch5\u003eThis is a live tutorial, you can run the code yourself. (Shift-Enter to Run)\u003c/h5\u003e\n"
+      },
+      "dateCreated": "Feb 13, 2015 11:16:21 PM",
+      "dateStarted": "May 11, 2016 12:37:07 PM",
+      "dateFinished": "May 11, 2016 12:37:09 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Load data into table",
+      "text": "import org.apache.commons.io.IOUtils\nimport java.net.URL\nimport java.nio.charset.Charset\n\n// Zeppelin creates and injects sc (SparkContext) and sqlContext (HiveContext or SqlContext)\n// So you don\u0027t need create them manually\n\n// load bank data\n\nval bankText \u003d sc.textFile(\"/Users/Shreyams/desktop/cmpe_273/zeppelin/incubator-zeppelin/datafile/locationOutput1.csv\")\n\n\ncase class DeathCause(Year: Integer,ZIP_Code: Integer, Causes_of_Death: String, Count: Integer, Location: String)\n\nval deathCause \u003d bankText.map(s \u003d\u003e s.split(\",\")).filter(s \u003d\u003e s(0) !\u003d \"Year\").map(s \u003d\u003e DeathCause(s(0).toInt, s(1).toInt, s(2), s(3).toInt, s(4))).toDF()\ndeathCause.registerTempTable(\"deathCause\")",
+      "authenticationInfo": {},
+      "dateUpdated": "May 19, 2016 12:57:15 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "title": true,
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "tableHide": false,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1423500779206_-1502780787",
+      "id": "20150210-015259_1403135953",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "import org.apache.commons.io.IOUtils\nimport java.net.URL\nimport java.nio.charset.Charset\nbankText: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[1] at textFile at \u003cconsole\u003e:26\ndefined class DeathCause\ndeathCause: org.apache.spark.sql.DataFrame \u003d [Year: int, ZIP_Code: int, Causes_of_Death: string, Count: int, Location: string]\n"
+      },
+      "dateCreated": "Feb 10, 2015 1:52:59 AM",
+      "dateStarted": "May 19, 2016 12:57:15 AM",
+      "dateFinished": "May 19, 2016 12:57:24 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql \nselect Year, count(1) value\nfrom deathCause \nwhere Year \u003c 2011\ngroup by Year\norder by Year",
+      "authenticationInfo": {},
+      "dateUpdated": "May 19, 2016 12:57:03 AM",
+      "config": {
+        "colWidth": 4.0,
+        "graph": {
+          "mode": "stackedAreaChart",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "Year",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "yAxis": {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1423500782552_-1439281894",
+      "id": "20150210-015302_1492795503",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "no such table deathCause; line 2 pos 5\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+      },
+      "dateCreated": "Feb 10, 2015 1:53:02 AM",
+      "dateStarted": "May 19, 2016 12:57:03 AM",
+      "dateFinished": "May 19, 2016 12:57:04 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql \nselect age, count(1) value \nfrom bank \nwhere age \u003c ${maxAge\u003d30} \ngroup by age \norder by age",
+      "dateUpdated": "May 19, 2016 12:54:26 AM",
+      "config": {
+        "colWidth": 4.0,
+        "graph": {
+          "mode": "multiBarChart",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "age",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "age",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql",
+        "editorHide": true,
+        "tableHide": true
+      },
+      "settings": {
+        "params": {
+          "maxAge": "35"
+        },
+        "forms": {
+          "maxAge": {
+            "name": "maxAge",
+            "defaultValue": "30",
+            "hidden": false
+          }
+        }
+      },
+      "jobName": "paragraph_1423720444030_-1424110477",
+      "id": "20150212-145404_867439529",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "age\tvalue\n19\t4\n20\t3\n21\t7\n22\t9\n23\t20\n24\t24\n25\t44\n26\t77\n27\t94\n28\t103\n29\t97\n30\t150\n31\t199\n32\t224\n33\t186\n34\t231\n"
+      },
+      "dateCreated": "Feb 12, 2015 2:54:04 PM",
+      "dateStarted": "Jul 3, 2015 1:43:28 PM",
+      "dateFinished": "Jul 3, 2015 1:43:29 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql \nselect age, count(1) value \nfrom bank \nwhere marital\u003d\"${marital\u003dsingle,single|divorced|married}\" \ngroup by age \norder by age",
+      "dateUpdated": "May 12, 2016 7:38:07 PM",
+      "config": {
+        "colWidth": 4.0,
+        "graph": {
+          "mode": "multiBarChart",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "age",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "age",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {
+          "marital": "single"
+        },
+        "forms": {
+          "marital": {
+            "name": "marital",
+            "defaultValue": "single",
+            "options": [
+              {
+                "value": "single"
+              },
+              {
+                "value": "divorced"
+              },
+              {
+                "value": "married"
+              }
+            ],
+            "hidden": false
+          }
+        }
+      },
+      "jobName": "paragraph_1423836262027_-210588283",
+      "id": "20150213-230422_1600658137",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "age\tvalue\n19\t4\n20\t3\n21\t7\n22\t9\n23\t17\n24\t13\n25\t33\n26\t56\n27\t64\n28\t78\n29\t56\n30\t92\n31\t86\n32\t105\n33\t61\n34\t75\n35\t46\n36\t50\n37\t43\n38\t44\n39\t30\n40\t25\n41\t19\n42\t23\n43\t21\n44\t20\n45\t15\n46\t14\n47\t12\n48\t12\n49\t11\n50\t8\n51\t6\n52\t9\n53\t4\n55\t3\n56\t3\n57\t2\n58\t7\n59\t2\n60\t5\n66\t2\n69\t1\n"
+      },
+      "dateCreated": "Feb 13, 2015 11:04:22 PM",
+      "dateStarted": "Jul 3, 2015 1:43:33 PM",
+      "dateFinished": "Jul 3, 2015 1:43:34 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Congratulations, it\u0027s done.\n##### You can create your own notebook in \u0027Notebook\u0027 menu. Good luck!",
+      "dateUpdated": "May 12, 2016 7:38:07 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorHide": false,
+        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1423836268492_216498320",
+      "id": "20150213-230428_1231780373",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003ch2\u003eCongratulations, it\u0027s done.\u003c/h2\u003e\n\u003ch5\u003eYou can create your own notebook in \u0027Notebook\u0027 menu. Good luck!\u003c/h5\u003e\n"
+      },
+      "dateCreated": "Feb 13, 2015 11:04:28 PM",
+      "dateStarted": "Apr 1, 2015 9:12:18 PM",
+      "dateFinished": "Apr 1, 2015 9:12:18 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\nAbout bank data\n\n```\nCitation Request:\n  This dataset is public available for research. The details are described in [Moro et al., 2011]. \n  Please include this citation if you plan to use this database:\n\n  [Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology. \n  In P. Novais et al. (Eds.), Proceedings of the European Simulation and Modelling Conference - ESM\u00272011, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\n\n  Available at: [pdf] http://hdl.handle.net/1822/14838\n                [bib] http://www3.dsi.uminho.pt/pcortez/bib/2011-esm-1.txt\n```",
+      "dateUpdated": "May 12, 2016 7:38:07 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorHide": false,
+        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1427420818407_872443482",
+      "id": "20150326-214658_12335843",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cp\u003eAbout bank data\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eCitation Request:\n  This dataset is public available for research. The details are described in [Moro et al., 2011]. \n  Please include this citation if you plan to use this database:\n\n  [Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology. \n  In P. Novais et al. (Eds.), Proceedings of the European Simulation and Modelling Conference - ESM\u00272011, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\n\n  Available at: [pdf] http://hdl.handle.net/1822/14838\n                [bib] http://www3.dsi.uminho.pt/pcortez/bib/2011-esm-1.txt\n\u003c/code\u003e\u003c/pre\u003e\n"
+      },
+      "dateCreated": "Mar 26, 2015 9:46:58 PM",
+      "dateStarted": "Jul 3, 2015 1:44:56 PM",
+      "dateFinished": "Jul 3, 2015 1:44:56 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect Location, Count(1) value\nfrom deathCause \ngroup by Location\nhaving Count(1) \u003c ${maxCount(1)\u003d500}\norder by Location",
+      "authenticationInfo": {},
+      "dateUpdated": "May 19, 2016 1:11:48 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "lineChart",
+          "height": 330.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "Location",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "Location",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorHide": false,
+        "editorMode": "ace/mode/sql",
+        "tableHide": false
+      },
+      "settings": {
+        "params": {
+          "maxCount": "500"
+        },
+        "forms": {
+          "maxCount": {
+            "name": "maxCount",
+            "displayName": "1",
+            "defaultValue": "500",
+            "hidden": false
+          }
+        }
+      },
+      "jobName": "paragraph_1435955447812_-158639899",
+      "id": "20150703-133047_853701097",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "Location\tvalue\nAgoura\t210\nAgoura Hills\t420\nAlhambra\t238\nAliso Viejo\t210\nAltadena\t420\nAmerican Canyon\t406\nAntelope\t420\nAntioch\t392\nArcata\t420\nArtesia\t14\nAzusa\t210\nBaldwin Park\t210\nBarstow Heights\t210\nBeaumont\t210\nBell\t56\nBellflower\t210\nBenicia\t462\nBloomington\t210\nBlythe\t434\nBostonia\t420\nBrea\t420\nBuena Park\t420\nBullhead City\t210\nBurlingame\t420\nCalabasas\t420\nCalexico\t420\nCarlsbad\t210\nCarmichael\t210\nCarson\t420\nCastaic\t420\nCastro Valley\t420\nCathedral City\t210\nChatsworth\t210\nChino\t308\nChino Hills\t210\nChula Vista\t420\nCitrus Heights\t210\nClaremont\t420\nColton\t420\nCompton\t210\nCorcoran\t378\nCudahy\t210\nCupertino\t420\nCypress\t420\nDana Point\t420\nDavis\t420\nDiamond Bar\t210\nDixon\t420\nDuarte\t280\nDublin\t210\nEast Hemet\t420\nEast Los Angeles\t210\nEast Palo Alto\t210\nEast Rancho Dominguez\t210\nEl Cajon\t210\nEl Cerrito\t210\nEl Dorado Hills\t420\nEl Monte\t434\nEl Segundo\t420\nElk Grove\t210\nFair Oaks\t350\nFairfield\t350\nFallbrook\t420\nFillmore\t420\nFolsom\t210\nFontana\t434\nFoothill Farms\t420\nFoster City\t210\nFountain Valley\t210\nFullerton\t420\nGilroy\t210\nGlen Avon\t210\nGlendora\t434\nGoleta\t420\nHacienda Heights\t210\nHawthorne\t210\nHemet\t462\nHercules\t420\nHermosa Beach\t210\nHesperia\t364\nHollister\t476\nHuntington Beach\t420\nIndio\t420\nIsla Vista\t420\nLa Cañada Flintridge\t420\nLa Habra\t210\nLa Palma\t420\nLa Puente\t210\nLa Quinta\t420\nLa Verne\t210\nLadera Ranch\t168\nLafayette\t210\nLaguna Beach\t224\nLaguna Hills\t238\nLaguna Niguel\t210\nLaguna Woods\t140\nLake Elsinore\t434\nLake Havasu City\t210\nLamont\t420\nLathrop\t420\nLawndale\t420\nLennox\t434\nLivermore\t378\nLoma Linda\t308\nLynwood\t210\nManhattan Beach\t210\nMarina\t210\nMartinez\t210\nMaywood\t420\nMead Valley\t420\nMillbrae\t210\nMira Loma\t210\nMission Viejo\t420\nMonrovia\t210\nMontclair\t210\nMontebello\t210\nMoorpark\t210\nMoraga\t210\nMurrieta\t238\nNewark\t210\nNipomo\t210\nNorth Highlands\t252\nNorwalk\t210\nOrangevale\t210\nOrcutt\t434\nOrinda\t210\nOxnard Shores\t210\nPacific Grove\t420\nPahrump\t98\nParamount\t420\nPerris\t266\nPico Rivera\t210\nPinole\t420\nPittsburg\t224\nPlacentia\t434\nPleasant Hill\t420\nPort Hueneme\t420\nRancho Palos Verdes\t210\nRancho San Diego\t420\nRancho Santa Margarita\t462\nRedondo Beach\t210\nReedley\t420\nRialto\t420\nRiverbank\t420\nRosemead\t210\nRosemont\t210\nRowland Heights\t210\nRubidoux\t434\nSan Bruno\t210\nSan Carlos\t210\nSan Clemente\t420\nSan Dimas\t210\nSan Gabriel\t420\nSan Juan Capistrano\t210\nSan Lorenzo\t420\nSan Marcos\t420\nSan Mateo\t420\nSan Pablo\t210\nSanta Fe Springs\t210\nSanta Paula\t210\nSantee\t210\nSaratoga\t420\nSeaside\t420\nSimi Valley\t420\nSouth El Monte\t210\nSouth Gate\t210\nSouth San Francisco\t420\nSouth San Jose Hills\t210\nSouth Whittier\t224\nSpanish Springs\t168\nSuisun\t378\nSun Valley\t28\nTijuana\t112\nTorrance\t434\nTulare\t420\nTustin\t210\nTwentynine Palms\t294\nUnion City\t420\nUniversal City\t210\nUpland\t448\nVallejo\t434\nVictorville\t420\nWalnut\t210\nWasco\t308\nWest Carson\t420\nWest Covina\t224\nWest Hills\t210\nWest Puente Valley\t210\nWest Whittier-Los Nietos\t210\nWestmont\t420\nWhittier\t448\nWildomar\t420\nYuba City\t434\nYuma\t252\n"
+      },
+      "dateCreated": "Jul 3, 2015 1:30:47 PM",
+      "dateStarted": "May 19, 2016 1:11:41 AM",
+      "dateFinished": "May 19, 2016 1:11:43 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect Causes_of_Death, Count(1) value\nfrom deathCause\ngroup by Causes_of_Death\norder by Causes_of_Death",
+      "authenticationInfo": {},
+      "dateUpdated": "May 19, 2016 1:42:21 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "lineChart",
+          "height": 474.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "Causes_of_Death",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "Causes_of_Death",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorHide": false,
+        "tableHide": false,
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1463104174037_1928736415",
+      "id": "20160512-184934_2039030128",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "Causes_of_Death\tvalue\nALZ\t22623\nCAN\t22631\nCLD\t22627\nDIA\t22625\nHOM\t22619\nHTD\t22631\nHYP\t22621\nINJ\t22626\nLIV\t22622\nNEP\t22621\nOTH\t22630\nPNF\t22623\nSTK\t22624\nSUI\t22626\n"
+      },
+      "dateCreated": "May 12, 2016 6:49:34 PM",
+      "dateStarted": "May 13, 2016 1:21:34 AM",
+      "dateFinished": "May 13, 2016 1:21:36 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect ZIP_Code, Count(1) value\nfrom deathCause\ngroup by ZIP_Code\nhaving Count(1) \u003c 50\norder by ZIP_Code",
+      "authenticationInfo": {},
+      "dateUpdated": "May 13, 2016 1:45:11 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "lineChart",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "ZIP_Code",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "ZIP_Code",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1463127674061_-25853327",
+      "id": "20160513-012114_615660319",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "ZIP_Code\tvalue\n90009\t14\n90509\t14\n90607\t14\n90608\t28\n90702\t14\n90743\t28\n91305\t14\n91346\t28\n91353\t14\n91404\t14\n91734\t14\n91758\t14\n91785\t28\n91793\t14\n91802\t28\n92023\t14\n92066\t42\n92136\t14\n92140\t14\n92222\t42\n92239\t42\n92286\t28\n92328\t14\n92334\t14\n92378\t14\n92402\t14\n92406\t28\n92415\t28\n92502\t14\n92531\t14\n92546\t42\n92564\t28\n92593\t14\n92652\t14\n92654\t28\n92678\t42\n92684\t14\n92834\t14\n93208\t42\n93216\t42\n93251\t14\n93260\t14\n93276\t14\n93287\t28\n93429\t14\n93464\t14\n93515\t14\n93519\t14\n93528\t14\n93529\t28\n93554\t28\n93558\t14\n93563\t14\n93581\t14\n93603\t14\n93624\t28\n93628\t14\n93665\t42\n93666\t42\n93922\t14\n93954\t28\n94101\t14\n94119\t14\n94512\t14\n94522\t14\n94569\t42\n94576\t28\n94592\t14\n94802\t14\n94922\t28\n94938\t14\n94948\t14\n94963\t14\n94971\t14\n94972\t14\n95017\t14\n95041\t42\n95140\t14\n95201\t14\n95213\t14\n95229\t42\n95253\t28\n95309\t28\n95312\t28\n95344\t14\n95381\t14\n95385\t28\n95389\t28\n95402\t28\n95419\t14\n95427\t42\n95433\t14\n95435\t14\n95450\t42\n95480\t14\n95488\t14\n95493\t42\n95494\t28\n95511\t28\n95514\t14\n95537\t42\n95538\t14\n95545\t14\n95559\t14\n95564\t28\n95569\t14\n95571\t14\n95604\t28\n95606\t28\n95625\t28\n95637\t28\n95652\t42\n95676\t28\n95698\t28\n95717\t14\n95812\t14\n95837\t42\n95903\t14\n95913\t28\n95930\t28\n95950\t42\n95978\t28\n95981\t14\n95986\t28\n96014\t28\n96015\t14\n96017\t28\n96029\t28\n96046\t28\n96071\t28\n96078\t28\n96105\t28\n96108\t14\n96112\t28\n96117\t14\n96121\t35\n96124\t14\n96125\t14\n96126\t14\n96127\t14\n96142\t46\n96146\t14\n96152\t14\n96155\t28\n96157\t42\n96160\t28\n"
+      },
+      "dateCreated": "May 13, 2016 1:21:14 AM",
+      "dateStarted": "May 13, 2016 1:45:11 AM",
+      "dateFinished": "May 13, 2016 1:45:13 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect Year, count(1) value\nfrom deathCause \nwhere Year \u003c 2014\ngroup by Year\norder by Year",
+      "authenticationInfo": {},
+      "dateUpdated": "May 19, 2016 1:06:25 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "lineChart",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "Year",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "Year",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1463128976570_1937192448",
+      "id": "20160513-014256_273163977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "Year\tvalue\n1999\t20790\n2000\t20832\n2001\t20930\n2002\t21154\n2003\t21084\n2004\t20972\n2005\t21182\n2006\t21168\n2007\t21308\n2008\t21392\n2009\t21168\n2010\t21182\n2011\t21056\n2012\t21280\n2013\t21251\n"
+      },
+      "dateCreated": "May 13, 2016 1:42:56 AM",
+      "dateStarted": "May 19, 2016 1:04:14 AM",
+      "dateFinished": "May 19, 2016 1:04:17 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect Location, count(1) value\nfrom deathCause \nwhere Causes_of_Death \u003d \u0027SUI\u0027\ngroup by Location\norder by Location",
+      "authenticationInfo": {},
+      "dateUpdated": "May 19, 2016 1:32:29 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "multiBarChart",
+          "height": 394.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "Location",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "Location",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1463644522839_1290349198",
+      "id": "20160519-005522_1643315652",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "Location\tvalue\nAdelanto\t104\nAgoura\t15\nAgoura Hills\t30\nAlameda\t75\nAlbany\t45\nAlhambra\t17\nAliso Viejo\t15\nAltadena\t30\nAltamont\t41\nAlum Rock\t136\nAmerican Canyon\t29\nAnaheim\t65\nAntelope\t30\nAntioch\t28\nApple Valley\t45\nArcadia\t45\nArcata\t30\nArden-Arcade\t45\nArroyo Grande\t60\nArtesia\t1\nArvin\t95\nAshland\t148\nAtascadero\t59\nAtwater\t75\nAvenal\t57\nAzusa\t15\nBakersfield\t135\nBaldwin Park\t15\nBanning\t45\nBarstow\t69\nBarstow Heights\t15\nBayside\t94\nBeaumont\t15\nBell\t4\nBellflower\t15\nBelmont\t45\nBenicia\t33\nBerkeley\t105\nBeverly Hills\t90\nBloomington\t15\nBlythe\t31\nBostonia\t30\nBoyle Heights\t45\nBrawley\t60\nBrea\t30\nBrentwood\t37\nBuena Park\t30\nBullhead City\t15\nBurbank\t75\nBurlingame\t30\nCalabasas\t30\nCalexico\t30\nCamarillo\t45\nCameron Park\t360\nCampbell\t105\nCanoga Park\t46\nCarlsbad\t15\nCarmichael\t15\nCarson\t30\nCastaic\t30\nCastro Valley\t30\nCathedral City\t15\nCeres\t60\nCerritos\t45\nChatsworth\t15\nChico\t180\nChino\t22\nChino Hills\t15\nChowchilla\t106\nChula Vista\t30\nCitrus Heights\t15\nClaremont\t30\nClearlake\t171\nClovis\t215\nCoachella\t60\nColton\t30\nCompton\t15\nConcord\t61\nCorcoran\t27\nCorona\t60\nCoronado\t45\nCosta Mesa\t45\nCovina\t60\nCudahy\t15\nCulver City\t115\nCupertino\t30\nCypress\t30\nDaly City\t105\nDana Point\t30\nDanville\t42\nDavis\t30\nDelano\t77\nDesert Hot Springs\t56\nDiamond Bar\t15\nDinuba\t131\nDixon\t30\nDowney\t45\nDuarte\t20\nDublin\t15\nEast Hemet\t30\nEast Los Angeles\t15\nEast Palo Alto\t15\nEast Rancho Dominguez\t15\nEcho Park\t60\nEl Cajon\t15\nEl Centro\t72\nEl Cerrito\t15\nEl Dorado Hills\t30\nEl Monte\t31\nEl Segundo\t30\nElk Grove\t15\nEncinitas\t129\nEscondido\t90\nEureka\t209\nFair Oaks\t25\nFairfield\t25\nFallbrook\t30\nFillmore\t30\nFlorence-Graham\t60\nFlorin\t90\nFolsom\t15\nFontana\t31\nFoothill Farms\t30\nFoster City\t15\nFountain Valley\t15\nFremont\t45\nFresno\t222\nFullerton\t30\nGalt\t75\nGarden Grove\t45\nGardena\t60\nGilroy\t15\nGlen Avon\t15\nGlendale\t60\nGlendora\t31\nGoleta\t30\nGranite Bay\t90\nGrants Pass\t44\nGreenfield\t46\nHacienda Heights\t15\nHanford\t45\nHawthorne\t15\nHayward\t60\nHemet\t33\nHercules\t30\nHermosa Beach\t15\nHesperia\t26\nHighland\t111\nHollister\t34\nHollywood\t45\nHuntington Beach\t30\nHuntington Park\t45\nImperial Beach\t45\nIndio\t30\nInglewood\t105\nIrvine\t76\nIsla Vista\t30\nLa Cañada Flintridge\t30\nLa Crescenta-Montrose\t74\nLa Habra\t15\nLa Jolla\t80\nLa Mesa\t75\nLa Mirada\t45\nLa Palma\t30\nLa Presa\t75\nLa Puente\t15\nLa Quinta\t30\nLa Verne\t15\nLadera Ranch\t12\nLafayette\t15\nLaguna\t58\nLaguna Beach\t16\nLaguna Hills\t17\nLaguna Niguel\t15\nLaguna Woods\t10\nLake Elsinore\t31\nLake Forest\t58\nLake Havasu City\t15\nLakeside\t45\nLakewood\t60\nLamont\t30\nLancaster\t45\nLathrop\t30\nLawndale\t30\nLemon Grove\t60\nLemoore\t50\nLennox\t31\nLincoln\t176\nLinda\t148\nLive Oak\t90\nLivermore\t27\nLodi\t130\nLoma Linda\t22\nLomita\t60\nLompoc\t59\nLong Beach\t114\nLos Altos\t57\nLos Angeles\t135\nLos Banos\t48\nLos Gatos\t68\nLynwood\t15\nMadera\t121\nManhattan Beach\t15\nManteca\t45\nMarina\t15\nMartinez\t15\nMaywood\t30\nMcKinleyville\t78\nMead Valley\t30\nMenifee\t60\nMenlo Park\t45\nMerced\t86\nMillbrae\t15\nMilpitas\t59\nMira Loma\t15\nMission Viejo\t30\nModesto\t120\nMonrovia\t15\nMontclair\t15\nMontebello\t15\nMonterey\t46\nMonterey Park\t45\nMoorpark\t15\nMoraga\t15\nMoreno Valley\t75\nMorgan Hill\t45\nMountain View\t60\nMurrieta\t17\nNapa\t49\nNational City\t46\nNewark\t15\nNewport Beach\t75\nNipomo\t15\nNorco\t45\nNorth Glendale\t45\nNorth Highlands\t18\nNorth Hollywood\t106\nNorth Tustin\t74\nNorthridge\t75\nNorwalk\t15\nNovato\t82\nOakdale\t304\nOakland\t110\nOakley\t69\nOceanside\t37\nOildale\t66\nOntario\t46\nOrange\t79\nOrangevale\t15\nOrcutt\t31\nOrinda\t15\nOroville\t191\nOxnard\t42\nOxnard Shores\t15\nPacific Grove\t30\nPacifica\t60\nPahrump\t7\nPalm Desert\t45\nPalm Springs\t51\nPalmdale\t75\nPalo Alto\t45\nParadise\t69\nParamount\t30\nPasadena\t60\nPaso Robles\t84\nPatterson\t52\nPerris\t19\nPetaluma\t54\nPico Rivera\t15\nPinole\t30\nPittsburg\t16\nPlacentia\t31\nPleasant Hill\t30\nPleasanton\t44\nPomona\t44\nPort Hueneme\t30\nPorterville\t134\nPoway\t90\nPrunedale\t41\nRamona\t63\nRancho Cordova\t41\nRancho Cucamonga\t95\nRancho Mirage\t45\nRancho Palos Verdes\t15\nRancho San Diego\t30\nRancho Santa Margarita\t33\nRedding\t473\nRedlands\t45\nRedondo Beach\t15\nRedwood City\t45\nReedley\t30\nRialto\t30\nRichmond\t46\nRidgecrest\t84\nRio Linda\t88\nRiverbank\t30\nRiverside\t60\nRocklin\t60\nRohnert Park\t98\nRosamond\t75\nRosemead\t15\nRosemont\t15\nRoseville\t45\nRowland Heights\t15\nRubidoux\t31\nSacramento\t128\nSalinas\t68\nSan Bernardino\t124\nSan Bruno\t15\nSan Carlos\t15\nSan Clemente\t30\nSan Diego\t140\nSan Dimas\t15\nSan Fernando\t77\nSan Francisco\t323\nSan Gabriel\t30\nSan Jacinto\t36\nSan Jose\t120\nSan Juan Capistrano\t15\nSan Leandro\t60\nSan Lorenzo\t30\nSan Luis Obispo\t104\nSan Marcos\t30\nSan Mateo\t30\nSan Pablo\t15\nSan Pedro\t56\nSan Rafael\t206\nSan Ramon\t40\nSanger\t46\nSanta Ana\t81\nSanta Barbara\t103\nSanta Clara\t45\nSanta Clarita\t103\nSanta Cruz\t55\nSanta Fe Springs\t15\nSanta Maria\t52\nSanta Monica\t165\nSanta Paula\t15\nSanta Rosa\t169\nSantee\t15\nSaratoga\t30\nSeal Beach\t59\nSeaside\t30\nSelma\t60\nShafter\t69\nSherman Oaks\t75\nSilver Lake\t105\nSimi Valley\t30\nSoledad\t48\nSouth El Monte\t15\nSouth Gate\t15\nSouth Lake Tahoe\t77\nSouth Pasadena\t45\nSouth San Francisco\t30\nSouth San Jose Hills\t15\nSouth Whittier\t16\nSouth Yuba City\t106\nSpanish Springs\t12\nStanton\t45\nStockton\t182\nSuisun\t27\nSun City\t45\nSun Valley\t2\nSunnyvale\t59\nSusanville\t203\nTecate\t90\nTemecula\t76\nTemple City\t45\nThousand Oaks\t60\nTijuana\t8\nTorrance\t31\nTracy\t52\nTruckee\t137\nTulare\t30\nTurlock\t115\nTustin\t15\nTwentynine Palms\t21\nUkiah\t280\nUnion City\t30\nUniversal City\t15\nUpland\t32\nVacaville\t45\nVallejo\t31\nVan Nuys\t76\nVentura\t60\nVictorville\t30\nVincent\t58\nVineyard\t43\nVisalia\t138\nVista\t82\nWalnut\t15\nWalnut Creek\t57\nWasco\t22\nWatsonville\t45\nWest Carson\t30\nWest Covina\t16\nWest Hills\t15\nWest Hollywood\t75\nWest Puente Valley\t15\nWest Sacramento\t48\nWest Whittier-Los Nietos\t15\nWestminster\t76\nWestmont\t30\nWhittier\t32\nWildomar\t30\nWillowbrook\t45\nWindsor\t173\nWoodland\t97\nWoodland Hills\t49\nYorba Linda\t75\nYuba City\t31\nYucaipa\t102\nYucca Valley\t61\nYuma\t18\n"
+      },
+      "dateCreated": "May 19, 2016 12:55:22 AM",
+      "dateStarted": "May 19, 2016 1:32:29 AM",
+      "dateFinished": "May 19, 2016 1:32:30 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect Location, count(1) value\nfrom deathCause \nwhere Causes_of_Death \u003d \u0027HOM\u0027\ngroup by Location\norder by Location",
+      "authenticationInfo": {},
+      "dateUpdated": "May 19, 2016 1:42:55 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "multiBarChart",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "Location",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "Location",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1463646262958_609205728",
+      "id": "20160519-012422_703410949",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "Location\tvalue\nAdelanto\t104\nAgoura\t15\nAgoura Hills\t30\nAlameda\t75\nAlbany\t45\nAlhambra\t17\nAliso Viejo\t15\nAltadena\t30\nAltamont\t41\nAlum Rock\t136\nAmerican Canyon\t29\nAnaheim\t65\nAntelope\t30\nAntioch\t28\nApple Valley\t45\nArcadia\t45\nArcata\t30\nArden-Arcade\t45\nArroyo Grande\t60\nArtesia\t1\nArvin\t95\nAshland\t148\nAtascadero\t59\nAtwater\t75\nAvenal\t57\nAzusa\t15\nBakersfield\t135\nBaldwin Park\t15\nBanning\t45\nBarstow\t69\nBarstow Heights\t15\nBayside\t94\nBeaumont\t15\nBell\t4\nBellflower\t15\nBelmont\t45\nBenicia\t33\nBerkeley\t105\nBeverly Hills\t90\nBloomington\t15\nBlythe\t31\nBostonia\t30\nBoyle Heights\t45\nBrawley\t60\nBrea\t30\nBrentwood\t37\nBuena Park\t30\nBullhead City\t15\nBurbank\t75\nBurlingame\t30\nCalabasas\t30\nCalexico\t30\nCamarillo\t45\nCameron Park\t360\nCampbell\t105\nCanoga Park\t46\nCarlsbad\t15\nCarmichael\t15\nCarson\t30\nCastaic\t30\nCastro Valley\t30\nCathedral City\t15\nCeres\t60\nCerritos\t45\nChatsworth\t15\nChico\t180\nChino\t22\nChino Hills\t15\nChowchilla\t106\nChula Vista\t30\nCitrus Heights\t15\nClaremont\t30\nClearlake\t171\nClovis\t215\nCoachella\t60\nColton\t30\nCompton\t15\nConcord\t61\nCorcoran\t27\nCorona\t60\nCoronado\t45\nCosta Mesa\t45\nCovina\t60\nCudahy\t15\nCulver City\t115\nCupertino\t30\nCypress\t30\nDaly City\t105\nDana Point\t30\nDanville\t42\nDavis\t30\nDelano\t77\nDesert Hot Springs\t56\nDiamond Bar\t15\nDinuba\t131\nDixon\t30\nDowney\t45\nDuarte\t20\nDublin\t15\nEast Hemet\t30\nEast Los Angeles\t15\nEast Palo Alto\t15\nEast Rancho Dominguez\t15\nEcho Park\t60\nEl Cajon\t15\nEl Centro\t72\nEl Cerrito\t15\nEl Dorado Hills\t30\nEl Monte\t31\nEl Segundo\t30\nElk Grove\t15\nEncinitas\t129\nEscondido\t90\nEureka\t209\nFair Oaks\t25\nFairfield\t25\nFallbrook\t30\nFillmore\t30\nFlorence-Graham\t60\nFlorin\t90\nFolsom\t15\nFontana\t31\nFoothill Farms\t30\nFoster City\t15\nFountain Valley\t15\nFremont\t45\nFresno\t222\nFullerton\t30\nGalt\t75\nGarden Grove\t45\nGardena\t60\nGilroy\t15\nGlen Avon\t15\nGlendale\t60\nGlendora\t31\nGoleta\t30\nGranite Bay\t90\nGrants Pass\t44\nGreenfield\t46\nHacienda Heights\t15\nHanford\t45\nHawthorne\t15\nHayward\t60\nHemet\t33\nHercules\t30\nHermosa Beach\t15\nHesperia\t26\nHighland\t111\nHollister\t34\nHollywood\t45\nHuntington Beach\t30\nHuntington Park\t45\nImperial Beach\t45\nIndio\t30\nInglewood\t105\nIrvine\t76\nIsla Vista\t30\nLa Cañada Flintridge\t30\nLa Crescenta-Montrose\t74\nLa Habra\t15\nLa Jolla\t80\nLa Mesa\t75\nLa Mirada\t45\nLa Palma\t30\nLa Presa\t75\nLa Puente\t15\nLa Quinta\t30\nLa Verne\t15\nLadera Ranch\t12\nLafayette\t15\nLaguna\t58\nLaguna Beach\t16\nLaguna Hills\t17\nLaguna Niguel\t15\nLaguna Woods\t10\nLake Elsinore\t31\nLake Forest\t58\nLake Havasu City\t15\nLakeside\t45\nLakewood\t60\nLamont\t30\nLancaster\t45\nLathrop\t30\nLawndale\t30\nLemon Grove\t60\nLemoore\t50\nLennox\t31\nLincoln\t176\nLinda\t148\nLive Oak\t90\nLivermore\t27\nLodi\t130\nLoma Linda\t22\nLomita\t60\nLompoc\t59\nLong Beach\t114\nLos Altos\t57\nLos Angeles\t135\nLos Banos\t48\nLos Gatos\t68\nLynwood\t15\nMadera\t121\nManhattan Beach\t15\nManteca\t45\nMarina\t15\nMartinez\t15\nMaywood\t30\nMcKinleyville\t78\nMead Valley\t30\nMenifee\t60\nMenlo Park\t45\nMerced\t86\nMillbrae\t15\nMilpitas\t59\nMira Loma\t15\nMission Viejo\t30\nModesto\t120\nMonrovia\t15\nMontclair\t15\nMontebello\t15\nMonterey\t46\nMonterey Park\t45\nMoorpark\t15\nMoraga\t15\nMoreno Valley\t75\nMorgan Hill\t45\nMountain View\t60\nMurrieta\t17\nNapa\t49\nNational City\t46\nNewark\t15\nNewport Beach\t75\nNipomo\t15\nNorco\t45\nNorth Glendale\t45\nNorth Highlands\t18\nNorth Hollywood\t106\nNorth Tustin\t74\nNorthridge\t75\nNorwalk\t15\nNovato\t82\nOakdale\t304\nOakland\t110\nOakley\t69\nOceanside\t37\nOildale\t66\nOntario\t46\nOrange\t79\nOrangevale\t15\nOrcutt\t31\nOrinda\t15\nOroville\t191\nOxnard\t42\nOxnard Shores\t15\nPacific Grove\t30\nPacifica\t60\nPahrump\t7\nPalm Desert\t45\nPalm Springs\t51\nPalmdale\t75\nPalo Alto\t45\nParadise\t69\nParamount\t30\nPasadena\t60\nPaso Robles\t84\nPatterson\t52\nPerris\t19\nPetaluma\t54\nPico Rivera\t15\nPinole\t30\nPittsburg\t16\nPlacentia\t31\nPleasant Hill\t30\nPleasanton\t44\nPomona\t44\nPort Hueneme\t30\nPorterville\t134\nPoway\t90\nPrunedale\t41\nRamona\t63\nRancho Cordova\t41\nRancho Cucamonga\t95\nRancho Mirage\t45\nRancho Palos Verdes\t15\nRancho San Diego\t30\nRancho Santa Margarita\t33\nRedding\t473\nRedlands\t45\nRedondo Beach\t15\nRedwood City\t45\nReedley\t30\nRialto\t30\nRichmond\t46\nRidgecrest\t84\nRio Linda\t88\nRiverbank\t30\nRiverside\t60\nRocklin\t60\nRohnert Park\t98\nRosamond\t75\nRosemead\t15\nRosemont\t15\nRoseville\t45\nRowland Heights\t15\nRubidoux\t31\nSacramento\t128\nSalinas\t68\nSan Bernardino\t124\nSan Bruno\t15\nSan Carlos\t15\nSan Clemente\t30\nSan Diego\t140\nSan Dimas\t15\nSan Fernando\t77\nSan Francisco\t323\nSan Gabriel\t30\nSan Jacinto\t36\nSan Jose\t120\nSan Juan Capistrano\t15\nSan Leandro\t60\nSan Lorenzo\t30\nSan Luis Obispo\t104\nSan Marcos\t30\nSan Mateo\t30\nSan Pablo\t15\nSan Pedro\t56\nSan Rafael\t206\nSan Ramon\t40\nSanger\t46\nSanta Ana\t81\nSanta Barbara\t103\nSanta Clara\t45\nSanta Clarita\t103\nSanta Cruz\t55\nSanta Fe Springs\t15\nSanta Maria\t52\nSanta Monica\t165\nSanta Paula\t15\nSanta Rosa\t169\nSantee\t15\nSaratoga\t30\nSeal Beach\t59\nSeaside\t30\nSelma\t60\nShafter\t69\nSherman Oaks\t75\nSilver Lake\t105\nSimi Valley\t30\nSoledad\t48\nSouth El Monte\t15\nSouth Gate\t15\nSouth Lake Tahoe\t76\nSouth Pasadena\t45\nSouth San Francisco\t30\nSouth San Jose Hills\t15\nSouth Whittier\t16\nSouth Yuba City\t106\nSpanish Springs\t12\nStanton\t45\nStockton\t182\nSuisun\t27\nSun City\t45\nSun Valley\t2\nSunnyvale\t59\nSusanville\t200\nTecate\t90\nTemecula\t76\nTemple City\t45\nThousand Oaks\t60\nTijuana\t8\nTorrance\t31\nTracy\t52\nTruckee\t134\nTulare\t30\nTurlock\t115\nTustin\t15\nTwentynine Palms\t21\nUkiah\t280\nUnion City\t30\nUniversal City\t15\nUpland\t32\nVacaville\t45\nVallejo\t31\nVan Nuys\t76\nVentura\t60\nVictorville\t30\nVincent\t58\nVineyard\t43\nVisalia\t138\nVista\t82\nWalnut\t15\nWalnut Creek\t57\nWasco\t22\nWatsonville\t45\nWest Carson\t30\nWest Covina\t16\nWest Hills\t15\nWest Hollywood\t75\nWest Puente Valley\t15\nWest Sacramento\t48\nWest Whittier-Los Nietos\t15\nWestminster\t76\nWestmont\t30\nWhittier\t32\nWildomar\t30\nWillowbrook\t45\nWindsor\t173\nWoodland\t97\nWoodland Hills\t49\nYorba Linda\t75\nYuba City\t31\nYucaipa\t102\nYucca Valley\t61\nYuma\t18\n"
+      },
+      "dateCreated": "May 19, 2016 1:24:22 AM",
+      "dateStarted": "May 19, 2016 1:42:41 AM",
+      "dateFinished": "May 19, 2016 1:42:44 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect Causes_of_Death, count(1) value\nfrom deathCause \nwhere Location \u003d \u0027San Francisco\u0027\ngroup by Causes_of_Death\norder by Causes_of_Death",
+      "authenticationInfo": {},
+      "dateUpdated": "May 19, 2016 1:47:24 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "lineChart",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "Causes_of_Death",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "Causes_of_Death",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1463646722524_-939193533",
+      "id": "20160519-013202_1221286434",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "Causes_of_Death\tvalue\nALZ\t323\nCAN\t323\nCLD\t323\nDIA\t323\nHOM\t323\nHTD\t323\nHYP\t323\nINJ\t323\nLIV\t323\nNEP\t323\nOTH\t323\nPNF\t323\nSTK\t323\nSUI\t323\n"
+      },
+      "dateCreated": "May 19, 2016 1:32:02 AM",
+      "dateStarted": "May 19, 2016 1:47:24 AM",
+      "dateFinished": "May 19, 2016 1:47:26 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect Location, count(1) value\nfrom deathCause \ngroup by Location\norder by Location",
+      "authenticationInfo": {},
+      "dateUpdated": "May 19, 2016 1:50:16 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "multiBarChart",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "Location",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "Location",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "value",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1463647529028_-1744696266",
+      "id": "20160519-014529_1516049030",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "Location\tvalue\nAdelanto\t1456\nAgoura\t210\nAgoura Hills\t420\nAlameda\t1050\nAlbany\t630\nAlhambra\t238\nAliso Viejo\t210\nAltadena\t420\nAltamont\t579\nAlum Rock\t1904\nAmerican Canyon\t406\nAnaheim\t910\nAntelope\t420\nAntioch\t392\nApple Valley\t630\nArcadia\t630\nArcata\t420\nArden-Arcade\t630\nArroyo Grande\t840\nArtesia\t14\nArvin\t1330\nAshland\t2072\nAtascadero\t826\nAtwater\t1050\nAvenal\t798\nAzusa\t210\nBakersfield\t1890\nBaldwin Park\t210\nBanning\t630\nBarstow\t966\nBarstow Heights\t210\nBayside\t1316\nBeaumont\t210\nBell\t56\nBellflower\t210\nBelmont\t630\nBenicia\t462\nBerkeley\t1470\nBeverly Hills\t1260\nBloomington\t210\nBlythe\t434\nBostonia\t420\nBoyle Heights\t630\nBrawley\t840\nBrea\t420\nBrentwood\t518\nBuena Park\t420\nBullhead City\t210\nBurbank\t1050\nBurlingame\t420\nCalabasas\t420\nCalexico\t420\nCamarillo\t630\nCameron Park\t5040\nCampbell\t1470\nCanoga Park\t644\nCarlsbad\t210\nCarmichael\t210\nCarson\t420\nCastaic\t420\nCastro Valley\t420\nCathedral City\t210\nCeres\t840\nCerritos\t630\nChatsworth\t210\nChico\t2520\nChino\t308\nChino Hills\t210\nChowchilla\t1484\nChula Vista\t420\nCitrus Heights\t210\nClaremont\t420\nClearlake\t2394\nClovis\t3010\nCoachella\t840\nColton\t420\nCompton\t210\nConcord\t854\nCorcoran\t378\nCorona\t840\nCoronado\t630\nCosta Mesa\t630\nCovina\t840\nCudahy\t210\nCulver City\t1610\nCupertino\t420\nCypress\t420\nDaly City\t1470\nDana Point\t420\nDanville\t588\nDavis\t420\nDelano\t1078\nDesert Hot Springs\t784\nDiamond Bar\t210\nDinuba\t1834\nDixon\t420\nDowney\t630\nDuarte\t280\nDublin\t210\nEast Hemet\t420\nEast Los Angeles\t210\nEast Palo Alto\t210\nEast Rancho Dominguez\t210\nEcho Park\t840\nEl Cajon\t210\nEl Centro\t1008\nEl Cerrito\t210\nEl Dorado Hills\t420\nEl Monte\t434\nEl Segundo\t420\nElk Grove\t210\nEncinitas\t1806\nEscondido\t1260\nEureka\t2926\nFair Oaks\t350\nFairfield\t350\nFallbrook\t420\nFillmore\t420\nFlorence-Graham\t840\nFlorin\t1260\nFolsom\t210\nFontana\t434\nFoothill Farms\t420\nFoster City\t210\nFountain Valley\t210\nFremont\t630\nFresno\t3108\nFullerton\t420\nGalt\t1050\nGarden Grove\t630\nGardena\t840\nGilroy\t210\nGlen Avon\t210\nGlendale\t840\nGlendora\t434\nGoleta\t420\nGranite Bay\t1260\nGrants Pass\t616\nGreenfield\t644\nHacienda Heights\t210\nHanford\t630\nHawthorne\t210\nHayward\t840\nHemet\t462\nHercules\t420\nHermosa Beach\t210\nHesperia\t364\nHighland\t1554\nHollister\t476\nHollywood\t630\nHuntington Beach\t420\nHuntington Park\t630\nImperial Beach\t630\nIndio\t420\nInglewood\t1470\nIrvine\t1064\nIsla Vista\t420\nLa Cañada Flintridge\t420\nLa Crescenta-Montrose\t1036\nLa Habra\t210\nLa Jolla\t1120\nLa Mesa\t1050\nLa Mirada\t630\nLa Palma\t420\nLa Presa\t1050\nLa Puente\t210\nLa Quinta\t420\nLa Verne\t210\nLadera Ranch\t168\nLafayette\t210\nLaguna\t812\nLaguna Beach\t224\nLaguna Hills\t238\nLaguna Niguel\t210\nLaguna Woods\t140\nLake Elsinore\t434\nLake Forest\t812\nLake Havasu City\t210\nLakeside\t630\nLakewood\t840\nLamont\t420\nLancaster\t630\nLathrop\t420\nLawndale\t420\nLemon Grove\t840\nLemoore\t700\nLennox\t434\nLincoln\t2464\nLinda\t2072\nLive Oak\t1260\nLivermore\t378\nLodi\t1820\nLoma Linda\t308\nLomita\t840\nLompoc\t826\nLong Beach\t1596\nLos Altos\t798\nLos Angeles\t1890\nLos Banos\t672\nLos Gatos\t952\nLynwood\t210\nMadera\t1694\nManhattan Beach\t210\nManteca\t630\nMarina\t210\nMartinez\t210\nMaywood\t420\nMcKinleyville\t1092\nMead Valley\t420\nMenifee\t840\nMenlo Park\t630\nMerced\t1204\nMillbrae\t210\nMilpitas\t826\nMira Loma\t210\nMission Viejo\t420\nModesto\t1680\nMonrovia\t210\nMontclair\t210\nMontebello\t210\nMonterey\t644\nMonterey Park\t630\nMoorpark\t210\nMoraga\t210\nMoreno Valley\t1050\nMorgan Hill\t630\nMountain View\t840\nMurrieta\t238\nNapa\t686\nNational City\t644\nNewark\t210\nNewport Beach\t1050\nNipomo\t210\nNorco\t630\nNorth Glendale\t630\nNorth Highlands\t252\nNorth Hollywood\t1484\nNorth Tustin\t1036\nNorthridge\t1050\nNorwalk\t210\nNovato\t1148\nOakdale\t4256\nOakland\t1540\nOakley\t966\nOceanside\t518\nOildale\t924\nOntario\t644\nOrange\t1106\nOrangevale\t210\nOrcutt\t434\nOrinda\t210\nOroville\t2674\nOxnard\t588\nOxnard Shores\t210\nPacific Grove\t420\nPacifica\t840\nPahrump\t98\nPalm Desert\t630\nPalm Springs\t714\nPalmdale\t1050\nPalo Alto\t630\nParadise\t966\nParamount\t420\nPasadena\t840\nPaso Robles\t1176\nPatterson\t728\nPerris\t266\nPetaluma\t756\nPico Rivera\t210\nPinole\t420\nPittsburg\t224\nPlacentia\t434\nPleasant Hill\t420\nPleasanton\t616\nPomona\t616\nPort Hueneme\t420\nPorterville\t1876\nPoway\t1260\nPrunedale\t574\nRamona\t882\nRancho Cordova\t574\nRancho Cucamonga\t1330\nRancho Mirage\t630\nRancho Palos Verdes\t210\nRancho San Diego\t420\nRancho Santa Margarita\t462\nRedding\t6622\nRedlands\t630\nRedondo Beach\t210\nRedwood City\t630\nReedley\t420\nRialto\t420\nRichmond\t644\nRidgecrest\t1176\nRio Linda\t1232\nRiverbank\t420\nRiverside\t840\nRocklin\t840\nRohnert Park\t1372\nRosamond\t1050\nRosemead\t210\nRosemont\t210\nRoseville\t630\nRowland Heights\t210\nRubidoux\t434\nSacramento\t1792\nSalinas\t952\nSan Bernardino\t1736\nSan Bruno\t210\nSan Carlos\t210\nSan Clemente\t420\nSan Diego\t1960\nSan Dimas\t210\nSan Fernando\t1078\nSan Francisco\t4522\nSan Gabriel\t420\nSan Jacinto\t504\nSan Jose\t1680\nSan Juan Capistrano\t210\nSan Leandro\t840\nSan Lorenzo\t420\nSan Luis Obispo\t1456\nSan Marcos\t420\nSan Mateo\t420\nSan Pablo\t210\nSan Pedro\t784\nSan Rafael\t2884\nSan Ramon\t560\nSanger\t644\nSanta Ana\t1134\nSanta Barbara\t1442\nSanta Clara\t630\nSanta Clarita\t1442\nSanta Cruz\t770\nSanta Fe Springs\t210\nSanta Maria\t728\nSanta Monica\t2310\nSanta Paula\t210\nSanta Rosa\t2366\nSantee\t210\nSaratoga\t420\nSeal Beach\t826\nSeaside\t420\nSelma\t840\nShafter\t966\nSherman Oaks\t1050\nSilver Lake\t1470\nSimi Valley\t420\nSoledad\t672\nSouth El Monte\t210\nSouth Gate\t210\nSouth Lake Tahoe\t1084\nSouth Pasadena\t630\nSouth San Francisco\t420\nSouth San Jose Hills\t210\nSouth Whittier\t224\nSouth Yuba City\t1484\nSpanish Springs\t168\nStanton\t630\nStockton\t2548\nSuisun\t378\nSun City\t630\nSun Valley\t28\nSunnyvale\t826\nSusanville\t2831\nTecate\t1260\nTemecula\t1064\nTemple City\t630\nThousand Oaks\t840\nTijuana\t112\nTorrance\t434\nTracy\t728\nTruckee\t1903\nTulare\t420\nTurlock\t1610\nTustin\t210\nTwentynine Palms\t294\nUkiah\t3920\nUnion City\t420\nUniversal City\t210\nUpland\t448\nVacaville\t630\nVallejo\t434\nVan Nuys\t1064\nVentura\t840\nVictorville\t420\nVincent\t812\nVineyard\t602\nVisalia\t1932\nVista\t1148\nWalnut\t210\nWalnut Creek\t798\nWasco\t308\nWatsonville\t630\nWest Carson\t420\nWest Covina\t224\nWest Hills\t210\nWest Hollywood\t1050\nWest Puente Valley\t210\nWest Sacramento\t672\nWest Whittier-Los Nietos\t210\nWestminster\t1064\nWestmont\t420\nWhittier\t448\nWildomar\t420\nWillowbrook\t630\nWindsor\t2422\nWoodland\t1358\nWoodland Hills\t686\nYorba Linda\t1050\nYuba City\t434\nYucaipa\t1428\nYucca Valley\t854\nYuma\t252\n"
+      },
+      "dateCreated": "May 19, 2016 1:45:29 AM",
+      "dateStarted": "May 19, 2016 1:50:08 AM",
+      "dateFinished": "May 19, 2016 1:50:10 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1463647808565_1275412390",
+      "id": "20160519-015008_1210691913",
+      "dateCreated": "May 19, 2016 1:50:08 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Zeppelin",
+  "id": "2A94M5J1Z",
+  "angularObjects": {
+    "2BHZNQB79:shared_process": [],
+    "2BJ5N7EUA:shared_process": [],
+    "2BKD8GJ5S:shared_process": [],
+    "2BMU77CZ7:shared_process": [],
+    "2BM3M1CD8:shared_process": [],
+    "2BHBJRQNP:shared_process": [],
+    "2BJ2VHMA8:shared_process": [],
+    "2BHKECYTB:shared_process": [],
+    "2BJ4RAFZK:shared_process": [],
+    "2BHZX2YYZ:shared_process": [],
+    "2BJUFZV7Q:shared_process": [],
+    "2BMJ8QFEG:shared_process": [],
+    "2BJPN9BHJ:shared_process": [],
+    "2BJA87QCV:shared_process": [],
+    "2BM3NA3YR:shared_process": [],
+    "2BHX4YH8J:shared_process": [],
+    "2BMVBVPRZ:shared_process": [],
+    "2BKDSMXC9:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default"
+  },
+  "info": {}
+}
